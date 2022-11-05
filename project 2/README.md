@@ -54,6 +54,7 @@ Writing any spaces or any other text on the line that is supposed to have three 
 Writing more than one line after the line with three hyphens. Don't, for example, add a gratuitous "Tax plan details subject to change."
 Writing lines to cerr instead of cout.
 Writing lines like these:
+```
 	Mildred Ratched woud pay $4286.90   misspelling
 	Mildred Ratched Would pay $4286.90  wrong capitalization
 	Mildred Ratched pays $4286.90       wrong text
@@ -63,6 +64,7 @@ Writing lines like these:
 	Mildred Ratched would pay $4286.900 extra digit
 	Mildred Ratched would pay 4286.90   missing dollar sign
 	Jaime Escalante would pay $2763     missing decimal point and digits
+ ```
 Your program must gather the name, the taxable income, the occupation, and the number of children in that order. However, if you detect an error in an item, you do not have to request or get the remaining items if you don't want to; just be sure you write to cout the line of three hyphens, the required message, and nothing more after that. If instead you choose to gather all input first before checking for errors, and you detect more than one error, then after writing the line of three hyphens, write only the error message for the earliest erroneous item.
 
 You will not write any loops in this program. This means that each time you run the program, it handles only one taxpayer. It also means that in the case of bad input, you must not keep prompting the user until you get something acceptable; our grading tool will not recognize that you're doing that.
