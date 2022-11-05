@@ -1,0 +1,16 @@
+project 1 report
+inputs to p1.exe (original.cpp): 
+	12 \n 8 \n 4 - returns Brian win prediction, as expected
+	12 \n 8 \n 8 - returns Brian win prediction, nonsensical because total votes > numberSurveyed
+	12 \n 8 \n -1 - returns Gavin win prediction, nonsensical because negative votes are not possible
+	12 \n 6 \n 6 - returns Brian win prediction, incorrect because votes are equal 
+
+changes to logic_error.cpp:
+	line 20-21: deleted '100.0*' from expression
+       program does not return percentage of votes, instead outputs 0.0% for both Gavin and Brian
+
+changes to compile_error.cpp:
+	line 20: deleted semicolon
+	line 30: changed 'forBrian' to 'Brian', an undeclared variable
+compiler recognizes missing semicolon in line 20 and undeclared identifier 'Brian', program does not compile
+	

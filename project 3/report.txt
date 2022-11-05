@@ -1,0 +1,55 @@
+OBSTACLES
+Multiple functions I wrote needed to loop through the code and run a code block on a substring between certain characters. I struggled with defining a substring of the right length and often encountered an out of bounds exception. Additionally, as I wrote a few more functions in addition to the two that were required by the project, I encountered some difficulty figuring out how to implement each function that tested the validity of a state code or party code correctly. 
+********
+PROGRAM DESIGN
+function isValidPollString(pollString):
+ converts pollString to uppercase
+ searches through pollString for state poll codes
+   calls isValidStateCode on each state poll code
+   returns false if isValidStateCode is ever false
+ returns true otherwise
+function isValidStateCode(statePollString):
+ returns true if statePollString is empty string
+ tests if first two letters of statePollString constitutes a valid state code, if false return false
+ searches through statePollString for result codes 
+   calls isValidResultString on each result code
+   returns false if isValidResultString is ever false
+ returns true otherwise
+function isValidResultString(resultString):
+  returns false if length is >3 //max length is 2 numbers + 1 letter = 3 chars
+  checks to make sure last character is a letter
+  loops from beginning of resultString to second to last character 
+    returns false if any character is not a number
+  returns true otherwise
+function countSeats(pollData, party, seatCount)
+  converts party to uppercase
+  calls isValidPollString, returns error code 1 if false
+  returns false if party is not a letter
+  sets seatCount to 0
+  converts pollData to uppercase
+  searches through pollData for state poll codes
+  calls processStatePollString on each state poll code and stores value returned into seatCount
+  returns 0 for successful run
+function processStatePollString(statePollString, party)
+ starting from index 2, search through statePollString for poll result
+   if party found matches party argument, call processResultString on result code and stores in seats
+  return the total count of seats
+function processResultString(resultString)
+ returns int value of numbers before the last character 
+********
+TEST DATA 		//assume int seats has been declared and initialized to -1 before every line
+assert(countSeats("", 'd', seats) == 0 && seats == 0);				//test empty pollString
+assert(countSeats("c", 'd', seats) == 1 && seats == -1);				//test invalid state code
+assert(countSeats("ca", 'd', seats) == 0 && seats == 0);				//test state code only
+assert(countSeats("ca2", 'd', seats) == 1 && seats == -1);				//test invalid result
+assert(countSeats("ca,", 'd', seats) == 1 && seats == -1);				//test end with comma
+assert(countSeats("ca2d", 'd', seats) == 0 && seats == 2);			//test valid result
+assert(countSeats("ca2%", 'd', seats) == 1 && seats == -1);			//test invalid party char
+assert(countSeats("ca 2d", 'd', seats) == 1 && seats == -1);			//test invalid char
+assert(countSeats("ca2d4f3d", 'd', seats) == 0 && seats == 5);			//test multiple results
+assert(countSeats("ca2d4f3d,nv4t16d9f", 'd', seats) == 0 && seats == 21); 	//test mutliple polls 
+assert(countSeats("ca2d4f3d,^nv4t16d9f%", 'd', seats) == 1 && seats == -1);	 //test invalid char
+assert(countSeats("cA2d4f3d,Nv4t16D9f", 'd', seats) == 0 && seats == 21);	//test different case
+assert(countSeats("ca2d4f3d,nv4t16d9f", ' ', seats) == 2 && seats == -1);		//test invalid party
+Bryan
+

@@ -1,0 +1,22 @@
+OBSTACLES
+The most notable obstacle I encountered was retrieving and storing inputs correctly. After reading the “Some Things about Strings” writeup, I attempted to implement the getline() function to store the name and occupation variable. I learned that I had to use the same variable inside the getline() call for both instances, then store that temporary variable into the name and occupation variables. 
+Another obstacle I encountered was determining how to detect the various errors the program could encounter. In the end, I implemented nested if-else statements, checking for each error in order. Only after checking for all possible errors would the code perform the tax calculations. 
+
+TEST DATA
+Ran example data to test if program delivered intended output (Clara Barton, 115000, nurse, 5)
+Ran example data to test if program delivered intended output (Rachel Green, 29544.69, waitress, 0)
+Tested empty name error (, 10000, student, 0)
+Tested negative income error (Bryan, -10000, student, 0)
+Tested empty occupation error (Bryan, 10000,,0)
+Tested negative children error (Bryan, 10000, student, -1)
+Tested output of error message for earliest erroneous item (,-10000,,-1)
+Tested output of error message for earliest erroneous item (Bryan, -10000, student, -1)
+Tested calculation for first tax bracket (Bryan, 10000, student, 0)
+Tested calculation for second tax bracket (Bryan, 100000, student, 0)
+Tested calculation for third tax bracket (Bryan, 200000, student, 0)
+Tested calculation for nurse occupation in second bracket (Bryan, 100000, nurse, 0)
+Tested calculation for teacher occupation in second bracket (Bryan, 100000, teacher, 0)
+Tested calculation for tax reduction from claiming children (Bryan, 100000, student, 3)
+
+Bryan
+

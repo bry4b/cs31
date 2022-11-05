@@ -1,0 +1,41 @@
+OBSTACLES
+All functions written needed to include exceptions for bad calls. An obstacle I had to overcome was to figure out the functions that would encounter more bad calls than others, and properly code these exceptions.  Additionally, some functions were more difficult to implement than others. Notably, the split() function took me a while to write as I would encounter issues with my loops skipping elements when calling rotateLeft(), as well as writing the code to rotate elements less than splitter to the right. 
+********
+TEST DATA 
+string a[7] = { "rishi", "margaret", "gordon", "tony", "", "john", "liz" };
+string b[4] = { "rishi", "margaret", "liz", "theresa" };
+string c[4] = { "gordon", "tony", "", "john" };
+string d[5] = { "margaret", "margaret", "margaret", "tony", "tony" };
+string e[3] = { "liz", "gordon", "tony" };
+string f[10] = { "margaret", "margaret", "margaret", "tony", "tony", "margaret", "tony", "tony", "margaret", "tony" };
+
+assert(lookup(a, 7, "john") == 5);		//search for john
+assert(lookup(a, 5, "john") == -1);		//john outside of n
+assert(lookup(b, 4, "john") == -1);		//john does not exist
+
+assert(positionOfMax(a, 7) == 3);		//max in full array
+assert(positionOfMax(a, 3) == 0);		//max in truncated array
+assert(positionOfMax(d, 5) == 3);		//multiple elements are max
+
+assert(countRuns(a, 7) == 0);			//no runs
+assert(countRuns(d, 5) == 2);			//two consecutive runs
+assert(countRuns(f, 10) == 3);			//nonconsecutive repeats
+
+assert(differ(a, 7, b, 4) == 2);			//two full arrays
+assert(differ(a, 2, b, 3) == 2);			//truncated array runs out
+assert(differ(d, 5, f, 10) == 5);			//full array runs out
+
+assert(subsequence(a, 7, b, 4) == -1);		//b not subsequence of a
+assert(subsequence(a, 7, b, 2) == 0);		//truncated b found in a
+assert(subsequence(a, 7, c, 4) == 2);		//c found in middle of a
+assert(subsequence(f, 10, d, 1) == 0);		//truncated d found multiple times in a
+
+assert(lookupAny(a, 7, c, 4) == 2);			//element of c in a
+assert(lookupAny(e, 3, b, 2) == -1);		//no elements from b in e
+assert(appendToAll(a, 7, "!") == 7 && a[0] == "rishi!" && a[6] == "liz!");		//test appendToAll
+assert(rotateLeft(a, 7, 2) == 2 && a[2] == "tony!" && a[6] == "gordon!");		//test rotateLeft
+assert(flip(a, 7) == 7 && a[0] == "gordon!" && a[3] == "!" && a[6] == "rishi!");		//test flip
+assert(split(a, 7, "john!") == 2 && a[2] == "john!");		//test split
+
+Bryan
+
