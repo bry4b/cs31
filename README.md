@@ -18,4 +18,3 @@ project scores are shown below:
 | project 5 |       |
 | project 6 |       |
 | project 7 |       |
-| project 8 |       |
