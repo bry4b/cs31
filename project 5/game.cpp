@@ -10,6 +10,7 @@
 #include <cctype>
 #include <random>
 #include <utility>
+#include <cassert>
 
 #include "utilities.h"
 using namespace std;
@@ -47,6 +48,8 @@ int main()
 		return -1;
 	}
 
+	assert(playOneRound(wordList, numWords, -1) == -1);
+
 	//user input for rounds to play
 	cout << "How many rounds do you want to play? ";
 	cin >> numRounds;
@@ -65,7 +68,7 @@ int main()
 		wordIndex = randInt(0, numWords - 1);
 		wordLength = strlen(wordList[wordIndex]);
 		cout << "The hidden word is " << wordLength << " letters long." << endl;
-		cerr << "hidden word: " << wordList[wordIndex] << endl;
+		//debug cerr << "hidden word: " << wordList[wordIndex] << endl;
 
 		//stores playOneRound to score
 		score = playOneRound(wordList, numWords, wordIndex);
@@ -234,7 +237,7 @@ int countSilvers(char target[], char input[])
 	//search for matches
 	for (int i = strlen(target) - 1; i >= 0; i--)
 	{
-		for (int j = strlen(target) - 1; j >= 0; j--)
+		for (int j = strlen(input) - 1; j >= 0; j--)
 		{
 			if (target[i] == input[j])
 			{
@@ -255,7 +258,6 @@ int countSilvers(char target[], char input[])
 *****************************/
 void removeChar(char input[], int pos)
 {
-	char temp = input[pos];
 	for (int i = pos; i < strlen(input) - 1; i++)		//sets each element in a[] from pos to the element to its right
 		input[i] = input[i + 1];
 	input[strlen(input) - 1] = '\0';	//sets last element in a[] to null 

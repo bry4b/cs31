@@ -1,0 +1,60 @@
+OBSTACLES
+I encountered few obstacles when writing this program. My program design was relatively straightforward to implement, but I did have a few issues when calculating the number of golds and silvers for every guess attempt. Because golds must have priority over silvers and their mutual exclusivity, my solution involved removing characters from a copy of the hidden word and the probe word each time a gold or silver was found. 
+********
+PROGRAM DESIGN
+main: 
+  create array wordList and store number of words 
+  take user input for rounds to be played and store in numRounds
+  loop until index reaches numRounds: 
+  write round number
+  generate random word for round using randInt(), then write word length
+  store return value of playOneRound to score
+  write score value 
+  compute average, min, and max scores, then write to output
+
+int playOneRound: 
+  store random word into hiddenWord
+  create 2 strings, one for user guess and one as a copy of hiddenWord
+  loop until guess == hiddenWord:
+  take user input for probe word and store into guess
+  call isValidInput() and isValidWord() to check if guess is 4-6 letter lowercase word that is in wordList  
+    if fail, break to next iteration of loop
+  break out of loop if guess == hiddenWord
+  call countGolds() and store value in golds
+  call countSilvers() and store value in silvers
+  write golds and silvers to output
+  increment scores
+
+
+
+bool isValidInput:
+  checks if input is between 4-6 letters
+  checks if input is all lowercase letters
+  return true if passes checks, false otherwise
+
+bool isValidWord:
+  searches wordList for input word
+  return true if word found, false otherwise
+
+int countGolds:
+  loop through input or target word, whichever is shorter:
+  if same character at same position of target and input word:
+    increment goldCount
+    call removeChar() on both target and input
+  return goldCount
+
+int countSilvers:
+  loop through target word: 
+  if any letter of input word matches a letter from target:
+    increment silverCount
+    call removeChar() on both target and input
+  return silverCount
+
+void removeChar:
+  shift each letter after pos one position to the left
+  replace last element of string with null character ‘\0’
+    
+  
+  
+Bryan
+
