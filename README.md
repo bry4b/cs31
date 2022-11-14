@@ -13,8 +13,8 @@ project scores are shown below:
 | --------- | ----- |
 | project 1 |  100  |
 | project 2 |  100  | 
-| project 3 |  96   |
-| project 4 |       |
+| project 3 |  96   | idk this one was hard
+| project 4 |  92   | bruh misread spec for countRuns(), coded for runs of >1 length instead of >=1 length
 | project 5 |       |
 | project 6 |       |
 | project 7 |       |
