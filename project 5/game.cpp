@@ -48,7 +48,7 @@ int main()
 		return -1;
 	}
 
-	assert(playOneRound(wordList, numWords, -1) == -1);
+	//check exception assert(playOneRound(wordList, numWords, -1) == -1);
 
 	//user input for rounds to play
 	cout << "How many rounds do you want to play? ";
