@@ -42,7 +42,7 @@ int main()
 	//create wordList and store number of words
 	numWords = getWords(wordList, MAXWORDS, WORDFILENAME);
 	cerr << "words loaded: " << numWords << endl;
-	if (numWords < 1)
+	if (numWords > MAXWORDS || numWords < 1)
 	{
 		cout << "No words were loaded, so I can't play the game." << endl;
 		return -1;
