@@ -1,0 +1,152 @@
+1. 
+a. int main()
+{
+    int arr[3] = { 5, 10, 15 };
+  int* ptr = arr;
+  
+    *ptr = 30;          // set arr[0] to 30
+    *ptr + 1 = 20;      // set arr[1] to 20, bug: ptr + 1 should be in parentheses
+    ptr += 2;
+    ptr[0] = 10;        // set arr[2] to 10, bug: should just be *ptr
+
+    while (ptr >= arr)	//bug: prints in reverse order
+    {
+        ptr--;					
+        cout << *ptr << endl;    // print values
+    }
+}
+
+SOLUTION:
+int main()
+{
+  int arr[3] = {5, 10, 15};
+  int* ptr = arr;
+  
+  *ptr = 30;
+  *(ptr + 1) = 20;
+  ptr += 2;
+  ptr = 10;
+  
+  while (ptr <= (arr + 2) )
+  {
+  cout << *ptr << endl;
+  ptr++;
+  }
+}
+
+b. pToMax is passed to findMax() as a copy and not by reference. That means that inside the function, a copy of the pointer will be created, and any changes made to pToMax are erased once the function returns. To fix this, findMax() should pass pToMax by reference as follows: 
+
+void findMax(int arr[], int n, int*& pToMax);
+
+c. *ptr is declared but uninitialized in main(). This causes an error when compiling, as ptr does not point to anything. Declaring an int var to be some arbitrary value and initializing ptr to the memory address of var would fix this problem:
+
+int main()
+{
+  int var = 0;
+  int* ptr = &var;
+  computeCube(5, ptr);
+  cout << “five cubed is “ << *ptr << endl;
+}
+
+d. The function compares not the values in the strings, but rather the memory addresses at which each string is stored. Instead, the function implementation should dereference str1 and str2 to compare the values at each index in each string as follows:
+
+bool strequal(const char str1[], const char str2[])
+{
+  while (*str1 != 0 && *str2 != 0)
+  {
+  if (*str1 != *str2)
+    return false;
+  str1++;
+  str2++;
+  }
+  return *str1 == *str2;
+       }
+       
+e. anArray is a variable local to the function getPtrToArray(), so after getPtrToArray() returns, anArray is cleared from memory. This causes the values that exist at the memory addresses pointed to by ptr to become undefined. Calling f() may also assign garbage values in these memory addresses previously occupied by anArray. Because of this, the program does not work as intended. 
+
+2. 
+a. double* cat;
+b. double mouse[5];
+c. cat = &mouse[4];
+d. *cat = 25;
+e. *(mouse + 3) = 54;
+f. cat -= 3;
+g. cat[1] = 42;
+h. cat[0] = 17;
+i. bool d = ( cat == mouse );
+j. bool b = ( *cat == *(cat + 1) );
+
+3. 
+a. double mean(const double* scores, int numScores)
+{
+  double tot = 0;
+  for (int i = 0; i < numScores; i++)
+  tot += * (scores + i);
+  return tot / numScores;
+}
+
+b. const char* findTheChar(const char* str, char chr)
+{
+  for (int k = 0; *(str + k) != 0; k++)
+  if ( *(str + k) == chr )
+    return str;
+  return nullptr;
+}
+
+c. const char* findTheChar(const char* str, char chr)
+{
+  while (*str)
+  {
+  if (*str == chr)
+    return str;
+  else 
+    str++;
+  }
+  return nullptr;
+}
+
+4. int main()
+{
+  int array[6] = {5, 3, 4, 17, 22, 19};
+  
+  int* ptr = maxwell(array, &array[2]); 	/* compares 5 and 4, returns the address of the larger value. 5 > 4, so ptr points to address of array[0] */
+  *ptr = -1; 	//sets value at ptr to -1, array[0] becomes -1
+  ptr += 2; 	//increments ptr by 2
+  ptr[1] = 9; 	//sets value at ptr + 1 to 9, array[3] becomes 9
+  *(array + 1) = 79; 	//sets value at array[1] to 79
+			//array[] is currently {-1, 79, 4, 9, 22, 19}
+  
+  cout << &array[5] - ptr << endl; /* prints the difference between memory address 
+       stored by ptr and the memory address of array[5]. ptr points to 
+       array[2], so this line prints 5 - 2 = 3, then a newline. */
+  swap1(&array[0], &array[1]); 	//swaps memory addresses for values at array[0] and array[1]
+  swap2(array, &array[2]); 	//swaps values stored at memory addresses array and array[2]
+ 			//array[] is currently {4, 79, -1, 9, 22, 19}
+  for (int i = 0; i < 6, i++) 	//prints every element of the array on a newline
+  cout << array[i] << endl;
+       }
+
+5. void removeS(char* ptr)
+{
+  char* tempPtr = ptr;
+  while (*ptr)
+  {
+  if (*ptr == ‘S’ || *ptr == ‘s’)
+  {
+    tempPtr = ptr;
+    while (*tempPtr)
+    {
+      *tempPtr = *(tempPtr + 1);
+       tempPtr++;
+    }
+    continue;
+    } 
+  ptr++;
+  }
+}
+  
+	
+  
+Bryan Liu
+
+
