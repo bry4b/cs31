@@ -15,6 +15,6 @@ project scores are shown below:
 | project 2 |  100  |          |
 | project 3 |  96   | idk this one was hard |
 | project 4 |  92   | bruh misread spec for countRuns(), coded for runs of >1 length instead of >=1 length |
-| project 5 |       | actually was kinda fun to write |
+| project 5 |  97?  | actually was kinda fun to write, hasn't been fully graded but 82/85 correctness score |
 | project 6 |       |          |
 | project 7 |       |          |
