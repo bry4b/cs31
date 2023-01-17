@@ -1,18 +1,14 @@
 # cs31
 
-this is a backup of projects from com sci 31 with smallberg (fall 2022)
+this is a backup of projects from com sci 31 with smallberg (fall 2022) <br>
+my final grade in the course was an A <br>
+my test scores were as follows: <br>
+midterm 1: 34/35 midterm 2: 57/65 final: 88/100 <br>
 
-midterm 1: 34/35 midterm 2: 57/65 final: 88/100
+this repo was uploaded as a showcase of knowledge <br>
+these files are the product of my own work and may contain errors <br>
 
-my final grade in the course was an A
-
-
-this repo was uploaded as a showcase of knowledge
-
-these files are the product of my own work and may contain errors
-
-project specs have been included in their respective folder's README files
-
+project specs have been included in their respective folder's README files <br>
 project scores are displayed below:
 
 | project   | score | comments |
